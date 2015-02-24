@@ -15,6 +15,8 @@ DIR="$(dirname $(readlink -f "$0"))"
 # file for storing list of currently plugged devices
 devlist_file="/var/tmp/udev-notify-devices"
 
+# servers="localhost:4567 localhost:3456"
+servers=
 show_notifications=true
 play_sounds=true
 
@@ -94,6 +96,20 @@ show_visual_notification()
    done
 }
 
+network_notification()
+{
+    local server=$1
+    local header=$2
+    local text=$3
+
+    msg="${header}###${text}"
+    arr=$(echo $server | tr ":" "\n")
+    host=${arr[0]}
+    port=${arr[1]}
+    echo "$msg" | nc -q 0 $host $port
+}
+
+
 # notification for plugged device {{{
 notify_plugged()
 {
@@ -106,6 +122,9 @@ notify_plugged()
    if [[ $play_sounds == true && -r $plug_sound_path ]]; then
       /usr/bin/play -q $plug_sound_path &
    fi
+   for server in $servers; do
+       network_notification "$server" "plugged" "$dev_title"
+   done
 }
 # }}}
 
@@ -121,6 +140,9 @@ notify_unplugged()
    if [[ $play_sounds == true && -r $unplug_sound_path ]]; then
       /usr/bin/play -q $unplug_sound_path &
    fi
+   for server in $servers; do
+       network_notification "$server" "unplugged" "$dev_title"
+   done
 }
 # }}}
 
