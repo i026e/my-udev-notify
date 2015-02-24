@@ -12,9 +12,9 @@ Installation
 ------------
 
  - unpack archive somewhere in your system
- - copy file ./stuff/my-udev-notify.rules  to  /etc/udev/rules.d
- - modify paths in it: change "/path/to/my-udev-notify/my-udev-notify.sh" to
-   real path to the my-udev-notify.sh script (where you unpacked it).
+ - copy file `./stuff/my-udev-notify.rules` to `/etc/udev/rules.d`
+ - modify paths in it: change `/path/to/my-udev-notify/my-udev-notify.sh` to
+   real path to the `my-udev-notify.sh` script (where you unpacked it).
 
 After this, it should work for newly attached devices. That is, if you unplug
 some device, you won't get notification. But when you plug it back, you will.
