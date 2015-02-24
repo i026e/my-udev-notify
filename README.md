@@ -30,14 +30,39 @@ system is off)
 Customization
 -------------
 
-   There is example configuration file:
+There is example configuration file:
+
       ./stuff/config_example/my-udev-notify.conf 
 
-   Valid locations are:
+Valid locations are:
+
       /etc/my-udev-notify.conf   (system-wide)
       ~/.my-udev-notify.conf     (per-user)
 
-   So you can copy it to some of these locations and modify for your needs.
+So you can copy it to some of these locations and modify for your needs.
+
+
+Notifying Servers
+-----------------
+
+You can notify (remote) servers through setting the variable servers
+to a list of servers in your configuration.  A server is represented
+as a colon-separated hostname and port number.  So, setting the
+following in your configuration file:
+
+    servers=localhost:3456
+
+Would send a textual representation of the notification to the server
+running on `localhost` on port `3456`.  A notification is composed of
+a single line sent on the socket.  This line contains a number of
+fields, separated by `###`.  The first field is either `plugged` or
+`unplugged`, all the remaining fields are the same as the text of the
+notification shown on screen.
+
+Sending is by way of `nc` (aka netcat), it requires a BSD version of
+`nc`, which is what is available on most default ubuntu installations.
+There is *NO* security whatsoever, use at your own risks.
+
 
 Known issues
 ------------
