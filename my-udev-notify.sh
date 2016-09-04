@@ -4,7 +4,7 @@
 #     - to guys from linux.org.ru;
 #     - to 'iptable' user from ##linux at irc.freenode.net.
 
-# test command: 
+# test command:
 #     sudo /bin/bash my-udev-notify -a add -p 'test_path' -b '555' -d '777'
 
 # get path to this script
@@ -71,7 +71,7 @@ shift $((OPTIND - 1))
 show_visual_notification()
 {
    # TODO: wait for 'iptable' user from ##linux to say how to do it better
-   #       or, at least it's better to use 'who' command instead of 'w', 
+   #       or, at least it's better to use 'who' command instead of 'w',
    #       because 'who' echoes display number like (:0), and echoes nothing if no display,
    #       which is more convenient to parse.
 
@@ -120,7 +120,7 @@ notify_plugged()
       show_visual_notification "device plugged" "$dev_title"
    fi
    if [[ $play_sounds == true && -r $plug_sound_path ]]; then
-      /usr/bin/play -q $plug_sound_path &
+      /usr/bin/aplay -q $plug_sound_path &
    fi
    for server in $servers; do
        network_notification "$server" "plugged" "$dev_title"
@@ -138,7 +138,7 @@ notify_unplugged()
       show_visual_notification "device unplugged" "$dev_title"
    fi
    if [[ $play_sounds == true && -r $unplug_sound_path ]]; then
-      /usr/bin/play -q $unplug_sound_path &
+      /usr/bin/aplay -q $unplug_sound_path &
    fi
    for server in $servers; do
        network_notification "$server" "unplugged" "$dev_title"
