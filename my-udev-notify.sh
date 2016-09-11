@@ -20,8 +20,9 @@ servers=
 show_notifications=true
 play_sounds=true
 
-plug_sound_path="$DIR/sounds/plug_sound.wav"
-unplug_sound_path="$DIR/sounds/unplug_sound.wav"
+#canberra gtk sound
+plug_sound="bell"
+unplug_sound="bell"
 # }}}
 
 # read config file {{{
@@ -119,8 +120,8 @@ notify_plugged()
       #notify-send "device plugged" "$dev_title" &
       show_visual_notification "device plugged" "$dev_title"
    fi
-   if [[ $play_sounds == true && -r $plug_sound_path ]]; then
-      /usr/bin/aplay -q $plug_sound_path &
+   if [[ $play_sounds == true ]]; then
+       canberra-gtk-play -i $plug_sound
    fi
    for server in $servers; do
        network_notification "$server" "plugged" "$dev_title"
@@ -137,8 +138,8 @@ notify_unplugged()
       #notify-send "device unplugged" "$dev_title" &
       show_visual_notification "device unplugged" "$dev_title"
    fi
-   if [[ $play_sounds == true && -r $unplug_sound_path ]]; then
-      /usr/bin/aplay -q $unplug_sound_path &
+   if [[ $play_sounds == true ]]; then
+       canberra-gtk-play -i $unplug_sound
    fi
    for server in $servers; do
        network_notification "$server" "unplugged" "$dev_title"
