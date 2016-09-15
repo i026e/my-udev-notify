@@ -2,7 +2,7 @@
 
 
 PLACEHOLDER="\$UDEV_NOTIFY_SCRIPT_PATH"
-UDEV_FILE="/etc/udev/rules.d/my-udev-notify.rules"
+UDEV_FILE="/etc/udev/rules.d/99-my-udev-notify.rules"
 
 
 DIR="$(dirname $(readlink -f "$0"))"
