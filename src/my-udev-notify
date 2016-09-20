@@ -21,8 +21,8 @@ show_notifications=true
 play_sounds=true
 
 #canberra gtk sound
-plug_sound="$DIR/sounds/plug_sound.wav"
-unplug_sound="$DIR/sounds/unplug_sound.wav"
+plug_sound="SOUND_PATH_PLUG"
+unplug_sound="SOUND_PATH_UNPLUG"
 # }}}
 
 # read config file {{{

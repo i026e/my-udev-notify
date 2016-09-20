@@ -1,0 +1,15 @@
+Source: my-udev-notify
+Section: utils
+Priority: optional
+Maintainer: Pavel Klevakin <klev.paul@gmail.com>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.6
+Homepage: https://github.com/dimonomid/my-udev-notify
+#Vcs-Git: git://anonscm.debian.org/collab-maint/my-udev-notify.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/my-udev-notify.git
+
+Package: my-udev-notify
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, udev, alsa-utils
+Description: Show notifications when USB device is plugged/unplugged.
+    Show notifications when any USB device is plugged/unplugged.

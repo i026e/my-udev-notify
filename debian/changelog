@@ -1,0 +1,5 @@
+my-udev-notify (0.0.2-1) xenial; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Pavel Klevakin <klev.paul@gmail.com>  Tue, 20 Sep 2016 11:23:00 +0300
