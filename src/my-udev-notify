@@ -90,9 +90,12 @@ show_visual_notification()
 
    for (( i=0; i<${#logged_users[@]}; i=($i + 2) )); do
       cur_user=${logged_users[$i + 0]}
+      cur_user_id=$(id -u $cur_user)
       cur_display=${logged_users[$i + 1]}
 
       export DISPLAY=$cur_display
+      export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$cur_user_id/bus"
+
       su $cur_user -c "notify-send '$header' '$text'"
    done
 }
