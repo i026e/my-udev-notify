@@ -1,0 +1,8 @@
+.pc
+
+arch/*.xz
+arch/my-udev-notify
+arch/pkg
+arch/src
+
+debian/my-udev-notify
