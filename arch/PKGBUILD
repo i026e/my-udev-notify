@@ -1,0 +1,47 @@
+# This is an example PKGBUILD file. Use this as a start to creating your own,
+# and remove these comments. For more information, see 'man PKGBUILD'.
+# NOTE: Please fill out the license field for your package! If it is unknown,
+# then please put 'unknown'.
+
+# Maintainer: Pavel Klevakin klev.paul@gmail.com
+pkgname=my-udev-notify
+pkgver=0.2
+pkgrel=1
+epoch=
+pkgdesc=""
+arch=("i686"  "x86_64")
+url="https://github.com/dimonomid/my-udev-notify"
+license=("unknown")
+groups=()
+depends=("udev" "alsa-utils")
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=( "$pkgname" )
+conflicts=( "$pkgname" )
+replaces=()
+backup=()
+options=()
+install="my-udev-notify.install"
+changelog=
+source=( "$pkgname::git+https://github.com/i026e/my-udev-notify.git" )
+noextract=()
+md5sums=( "SKIP" )
+validpgpkeys=()
+
+prepare() {
+	cd "$srcdir/$pkgname"
+}
+
+build() {
+        cd "$srcdir/$pkgname"
+}
+
+check() {
+        cd "$srcdir/$pkgname"
+}
+
+package() {
+	cd "$srcdir/$pkgname"
+	make DESTDIR="$pkgdir/" install
+}
