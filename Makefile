@@ -10,7 +10,7 @@ ifndef DESTDIR
 endif
 
 CONF_PATH = /etc
-BIN_PATH = /usr/share/bin
+BIN_PATH = /usr/bin
 UDEV_RULES_PATH = /etc/udev/rules.d
 SOUND_PATH = /usr/share/sounds/my-udev-notify
 
@@ -43,9 +43,8 @@ install:
 
 	chmod --recursive 755 "$(DESTDIR)"
 
-arch:
-	cd ./arch
-	makepkg -f
+arch-package:
+	cd ./arch && makepkg -f
 
 debian:
 	#dh_make --createorig
